@@ -1,81 +1,50 @@
-# ⚡️ vite electron esbuild starter
+# pomo lite
+一款简单的基于 `electron`、`react`和`vite`的番茄钟
 
-![⚡️](./demo.gif)
-
-[Chinese](./README_CN.md)
-
-The electron project stater using vite for renderer process and esbuild / tsc for main process.
-
-React demo with antd is available here (Automatic style introduction has been configured. Vite supports on-demand loading by default): [antd branch](https://github.com/jctaoo/electron-starter/tree/antd)
-
-Note: CSC_IDENTITY_AUTO_DISCOVERY is set to false by default to avoid the codesign operation in packaging macos (learn more: [codesign](https://www.electron.build/code-signing))
-
-## Usage
-
-Create a Project:
-
-- Clone this project directly.
-- If you use GitHub, click Use this template at the top of the page or [here](https://github.com/jctaoo/electron-starter/generate) (do not check include all branch)
-
-Installation dependencies
+### start
 
 ```shell
-yarn
-```
-Start local development
-```shell
-# Use esbuild to compile the main process Typescript, which is faster
+$ yarn # or npm i
+
+# 使用 esbuild 来编译主进程 Typescript，速度更佳
 yarn run dev
 
-# Use tsc to compile the main process Typescript
+# 使用 tsc 来编译主进程 Typescript
 yarn run dev:tsc
 ```
 
-You can also use `dev:main`, `dev:main:tsc`, and `dev:renderer` separately to debug the main process and the rendering process separately.
+也可以分开使用 `dev:main`, `dev:main:tsc`, `dev:renderer` 来分开调试主进程和渲染进程。
 
-Compile/Pack
+编译/打包
 
 ```shell
-# Only build the target code and resources of the main process and the rendering process, without packaging (exe, dmg, etc.)
+# 仅构建主进程和渲染进程的目标代码和资源，不打包（exe, dmg 等）
 yarn run build
 
-# Preview your application in production mode without pack.
+# 在 build 的基础上运行/预览运行效果 (production 模式)，用来本地验证
 yarn run preview
 
-# Build and pack as a runnable program or installer
+# 构建并打包为可运行的程序或安装程序
 yarn run pack:win
 yarn run pack:mac
 yarn run pack:linux
 
-# Pack for all platforms
-yarn run pack # Exclude mac platform, applicable to linux & win
+# 为所有平台打包
+yarn run pack # 排除 mac 平台，适用于 linux & win
 yarn run pack:all
 ```
 
-Clean up the build directory
+清理构建目录
 
 ```shell
 yarn run clean
 ```
 
-## Screenshot
-
-![screenshot](./screenshot.png)
-
-## File structure
-
-Use [two-package-structure](https://www.electron.build/tutorials/two-package-structure)
-
-```
-+ app                     electron-builder app directory and its build product directory (target js code, image resources, etc., instead of installation packages or executable files)
-  - package.json          Production dependencies, all stored as dependencies (not devDependencies)
-+ dist                    electron-builder package directory
-+ scripts                 Support scripts for development/build.
-+ src      
-  + common                common code
-  + main                  for main process
-  + renderer              for renderer process
-- package.json            Dependencies during development, all stored as devDependencies (not dependencies)
-- vite.config.ts          vite configurations
-- electron-builder.yml    electron-builder configurations
-```
+### todo
+- [x] 实现休息
+- [x] 实现四个番茄钟后一个长休息
+- [x] 番茄钟可暂停
+- [ ] 可存储数据
+- [ ] 展示历史番茄钟
+- [ ] UI美化
+- [ ] 暗黑模式
